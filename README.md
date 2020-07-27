@@ -7,7 +7,7 @@ Joel "Joel Van Horn <joel@joelvanhorn.com> (http://joelvanhorn.com)" has improve
 
 [Live demo](https://ngflowy.web.app/)
 
-I have just port it to Angular.
+I have just port it to Angular. Pure typescript, linted.
 
 Couple things I have changed for my specific case:
 - Made first node to be fixed and enable canvas navigation, similar to figma.
