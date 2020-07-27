@@ -1,5 +1,5 @@
-import { Canvas } from './Canvas';
-import { Block } from './Block';
+import { Canvas } from './canvas';
+import { Block } from './block';
 
 export class Engine {
     document: Document = document;
@@ -68,7 +68,6 @@ export class Engine {
 
         if (which === 3 || !grabbedNode) {
             if (event.target.className === 'canvas') {
-                console.log('Canvas move');
                 this.canvas.toggleDraggingCanvas(true);
             } else {
                 return;
@@ -523,7 +522,6 @@ export class Engine {
         if (this.canvas.isDragging) {
             this.canvas.updateDragPosition();
         } else if (this.canvas.isRearranging) {
-            console.log('moveisRearrangingBlock');
             this.canvas.updateRearrangePosition();
         }
         

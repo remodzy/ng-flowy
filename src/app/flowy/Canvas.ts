@@ -1,5 +1,5 @@
-import { BlockElement } from './BlockElement';
-import { Block } from './Block';
+import { BlockElement } from './blockElement';
+import { Block } from './block';
 
 export interface State {
     dragX: number;
@@ -76,8 +76,6 @@ export class Canvas {
     const { top, left } = this.node.getBoundingClientRect();
     const x = parseInt(this.node.style.marginLeft.replace('px',''), 10);
     const y = parseInt(this.node.style.marginTop.replace('px',''), 10);
-    console.log(x);
-    console.log(y);
     return {
       top: -this.initialMaring,
       left: -this.initialMaring,
