@@ -14,6 +14,7 @@ export interface State {
 }
 
 export class Canvas {
+    initialMaring: number;
     window: Window;
     document: Document;
     node: HTMLElement;
@@ -31,8 +32,8 @@ export class Canvas {
     draggedElement: BlockElement;
     draggedTree: Block[];
 
-  constructor({ window, document, node, spacingX = 20, spacingY = 80 }) {
-
+  constructor({ window, document, node, spacingX = 20, spacingY = 80, initialMaring = 2500 }) {
+    this.initialMaring = initialMaring;
     this.window = window;
     this.document = document;
     this.node = node;
@@ -78,8 +79,8 @@ export class Canvas {
     console.log(x);
     console.log(y);
     return {
-      top: -2500,
-      left: -2500,
+      top: -this.initialMaring,
+      left: -this.initialMaring,
       scrollTop: -y ? -y : 0,
       scrollLeft: -x ? -x : 0
     };
