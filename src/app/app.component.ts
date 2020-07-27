@@ -24,25 +24,25 @@ export class AppComponent implements AfterViewInit {
 
   actions: Action[] = [
     {
-      type: "1",
+      type: '1',
       icon: 'assets/eye.svg',
       title: 'New visitor',
       description: 'Triggers when somebody visits a specified page'
     },
     {
-      type: "2",
+      type: '2',
       icon: 'assets/action.svg',
       title: 'Action is performed',
       description: 'Triggers when somebody performs a specified action'
     },
     {
-      type: "3",
+      type: '3',
       icon: 'assets/time.svg',
       title: 'Time has passed',
       description: 'Triggers after a specified amount of time'
     },
     {
-      type: "4",
+      type: '4',
       icon: 'assets/error.svg',
       title: 'Error prompt',
       description: 'Triggers when a specified error happens'
@@ -61,7 +61,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   onGrab(block){
-    
+
   }
   onRelease(){
 

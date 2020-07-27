@@ -40,7 +40,7 @@ export class Canvas {
     this.spacingX = spacingX;
     this.spacingY = spacingY;
     this.state = {
-        dragX:0,
+        dragX: 0,
         dragY: 0,
         mouseX: 0,
         mouseY: 0,
@@ -74,8 +74,8 @@ export class Canvas {
   position = () => {
 
     const { top, left } = this.node.getBoundingClientRect();
-    const x = parseInt(this.node.style.marginLeft.replace('px',''), 10);
-    const y = parseInt(this.node.style.marginTop.replace('px',''), 10);
+    const x = parseInt(this.node.style.marginLeft.replace('px', ''), 10);
+    const y = parseInt(this.node.style.marginTop.replace('px', ''), 10);
     return {
       top: -this.initialMaring,
       left: -this.initialMaring,
@@ -124,8 +124,8 @@ export class Canvas {
     });
 
     this.draggedElement.styles({
-      left: mouseX - dragX + "px",
-      top: mouseY - dragY + "px"
+      left: mouseX - dragX + 'px',
+      top: mouseY - dragY + 'px'
     });
 
     this.toggleDragger(true);
@@ -251,12 +251,12 @@ export class Canvas {
         const arrowElement = blockElement.arrow();
 
         blockElement.styles({
-          left: blockElement.position().left - left + "px",
-          top: blockElement.position().top - top + "px"
+          left: blockElement.position().left - left + 'px',
+          top: blockElement.position().top - top + 'px'
         });
         arrowElement.styles({
-          left: arrowElement.position().left - left + "px",
-          top: arrowElement.position().top - top + "px"
+          left: arrowElement.position().left - left + 'px',
+          top: arrowElement.position().top - top + 'px'
         });
 
         this.draggedElement.node.appendChild(blockElement.node);
@@ -290,13 +290,13 @@ export class Canvas {
       const { left, top, scrollLeft, scrollTop } = this.position();
 
       blockElement.styles({
-        left: blockElement.position().left - left + scrollLeft + "px",
-        top: blockElement.position().top - top + scrollTop + "px"
+        left: blockElement.position().left - left + scrollLeft + 'px',
+        top: blockElement.position().top - top + scrollTop + 'px'
       });
 
       arrowElement.styles({
-        left: arrowElement.position().left - left + scrollLeft + "px",
-        top: arrowElement.position().top - (top + scrollTop) + "px"
+        left: arrowElement.position().left - left + scrollLeft + 'px',
+        top: arrowElement.position().top - (top + scrollTop) + 'px'
       });
 
       this.appendChild(blockElement.node, arrowElement.node);
@@ -339,8 +339,8 @@ export class Canvas {
     const { top, left, scrollTop, scrollLeft } = this.position();
 
     this.draggedElement.styles({
-      top: this.draggedElement.position().top - top + scrollTop + "px",
-      left: this.draggedElement.position().left - left + scrollLeft + "px"
+      top: this.draggedElement.position().top - top + scrollTop + 'px',
+      left: this.draggedElement.position().left - left + scrollLeft + 'px'
     });
 
     this.appendChild(this.draggedElement.node);
@@ -374,16 +374,15 @@ export class Canvas {
 
   updateCanvasDragPosition = () => {
     const { mouseX, mouseY, dragX, dragY, orgX, orgY } = this.state;
-    
-    this.node.style.marginLeft = this.state.canvasX + mouseX - orgX + "px";
-    this.node.style.marginTop = this.state.canvasY + mouseY - orgY + "px";
+    this.node.style.marginLeft = this.state.canvasX + mouseX - orgX + 'px';
+    this.node.style.marginTop = this.state.canvasY + mouseY - orgY + 'px';
   }
 
   updateDragPosition = () => {
     const { mouseX, mouseY, dragX, dragY } = this.state;
     this.draggedElement.styles({
-      left: mouseX - dragX + "px",
-      top: mouseY - dragY + "px"
+      left: mouseX - dragX + 'px',
+      top: mouseY - dragY + 'px'
     });
   }
 
@@ -392,8 +391,8 @@ export class Canvas {
     const { left, top, scrollLeft, scrollTop } = this.position();
 
     this.draggedElement.styles({
-      left: mouseX - dragX - left + scrollLeft + "px",
-      top: mouseY - dragY - top + scrollTop + "px"
+      left: mouseX - dragX - left + scrollLeft + 'px',
+      top: mouseY - dragY - top + scrollTop + 'px'
     });
   }
 
@@ -425,8 +424,8 @@ export class Canvas {
         this.state.orgX = this.state.mouseX;
         this.state.orgY = this.state.mouseY;
     } else {
-        this.state.canvasX = parseInt(this.node.style.marginLeft.replace('px',''), 10);
-        this.state.canvasY = parseInt(this.node.style.marginTop.replace('px',''), 10);
+        this.state.canvasX = parseInt(this.node.style.marginLeft.replace('px', ''), 10);
+        this.state.canvasY = parseInt(this.node.style.marginTop.replace('px', ''), 10);
     }
   }
 }

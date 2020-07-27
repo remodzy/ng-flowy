@@ -16,8 +16,8 @@ export class Engine {
     public deleteBlocks: () => void;
 
     constructor(
-        container: HTMLElement, 
-        spacingX?: number, 
+        container: HTMLElement,
+        spacingX?: number,
         spacingY?: number,
         onGrab?: (grabbedNode: HTMLElement) => void,
         onRelease?: () => void,
@@ -75,7 +75,6 @@ export class Engine {
         } else  {
             this.canvas.grab(grabbedNode);
             this.canvas.toggleDragging(true);
-    
             this.onGrab(grabbedNode);
         }
     }
@@ -213,14 +212,14 @@ export class Engine {
                 lft += childWidth / 2 - width / 2;
             }
 
-            childElement.styles({ left: lft + "px" });
+            childElement.styles({ left: lft + 'px' });
         });
 
         const { top, left, scrollTop, scrollLeft } = this.canvas.position();
 
         this.canvas.draggedElement.styles({
-            left: block.x - totalWidth / 2 + totalRemove - left + scrollLeft + "px",
-            top: block.y + block.height / 2 + this.canvas.spacingY - top + "px"
+            left: block.x - totalWidth / 2 + totalRemove - left + scrollLeft + 'px',
+            top: block.y + block.height / 2 + this.canvas.spacingY - top + 'px'
         });
 
         if (this.canvas.isRearranging) {
@@ -242,12 +241,12 @@ export class Engine {
                 const arrowParent = arrowElement.node;
 
                 blockElement.styles({
-                    left: blockElement.position().left - left + scrollLeft + "px",
-                    top: blockElement.position().top - top + scrollTop + "px"
+                    left: blockElement.position().left - left + scrollLeft + 'px',
+                    top: blockElement.position().top - top + scrollTop + 'px'
                 });
                 arrowElement.styles({
-                    left: arrowElement.position().left - left + scrollLeft + 20 + "px",
-                    top: arrowElement.position().top - top + scrollTop + "px"
+                    left: arrowElement.position().left - left + scrollLeft + 20 + 'px',
+                    top: arrowElement.position().top - top + scrollTop + 'px'
                 });
 
                 this.canvas.appendChild(blockParent, arrowParent);
@@ -291,7 +290,7 @@ export class Engine {
             </div>
           `);
             draggedElement.arrow().styles({
-                left: x - 5 - left + scrollLeft + "px"
+                left: x - 5 - left + scrollLeft + 'px'
             });
         } else {
             this.canvas.appendHtml(`
@@ -313,11 +312,11 @@ export class Engine {
             </div>
           `);
             draggedElement.arrow().styles({
-                left: block.x - 20 - left + scrollLeft + "px"
+                left: block.x - 20 - left + scrollLeft + 'px'
             });
         }
         draggedElement.arrow().styles({
-            top: block.y + block.height / 2 + "px"
+            top: block.y + block.height / 2 + 'px'
         });
 
         if (block.parent !== -1) {
@@ -362,7 +361,7 @@ export class Engine {
                 const blockElement = this.canvas.findBlockElement(id);
 
                 blockElement.styles({
-                    left: x - width / 2 - currentOffsetLeft + 20 + "px"
+                    left: x - width / 2 - currentOffsetLeft + 20 + 'px'
                 });
 
                 if (parent === -1) {
@@ -374,7 +373,7 @@ export class Engine {
                 const arrowX = x - parentX;
 
                 arrowElement.styles({
-                    left: arrowX < 0 ? x - currentOffsetLeft + 20 - 5 : parentX - 20 - currentOffsetLeft + 20 + "px"
+                    left: arrowX < 0 ? x - currentOffsetLeft + 20 - 5 : parentX - 20 - currentOffsetLeft + 20 + 'px'
                 });
             });
 
@@ -496,13 +495,10 @@ export class Engine {
     }
 
     moveBlock(event) {
-
         this.handleCoordinates(event);
-        
         if (this.canvas.isCanvasDragging) {
             this.canvas.updateCanvasDragPosition();
         }
-
         if (this.canvas.isDraggingBlock) {
             this.canvas.toggleRearranging(true);
             this.canvas.toggleDragger(true);
@@ -524,7 +520,7 @@ export class Engine {
         } else if (this.canvas.isRearranging) {
             this.canvas.updateRearrangePosition();
         }
-        
+
         if (!this.canvas.isDragging && !this.canvas.isRearranging) {
             return;
         }
