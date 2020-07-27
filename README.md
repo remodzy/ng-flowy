@@ -1,5 +1,4 @@
 This is an Angular 9 version of flowy.
-Live demo: 
 
 Original projet, pure javascript done by awesome "Alyssa X <hi@alyssax.com> (http://alyssax.com/)" - https://github.com/alyssaxuu/flowy
 
