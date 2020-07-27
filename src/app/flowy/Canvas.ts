@@ -284,7 +284,6 @@ export class Canvas {
       if (block.id === this.draggedElement.id) {
         return;
       }
-
       const blockElement = this.findBlockElement(block.id);
       const arrowElement = blockElement.arrow();
       const { left, top, scrollLeft, scrollTop } = this.position();
@@ -295,8 +294,8 @@ export class Canvas {
       });
 
       arrowElement.styles({
-        left: arrowElement.position().left - left + scrollLeft + 'px',
-        top: arrowElement.position().top - (top + scrollTop) + 'px'
+        left: arrowElement.position().left - left + scrollLeft  + 'px',
+        top: arrowElement.position().top - top + scrollTop + 'px'
       });
 
       this.appendChild(blockElement.node, arrowElement.node);

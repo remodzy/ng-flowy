@@ -1,5 +1,6 @@
 import { Canvas } from './canvas';
 import { Block } from './block';
+import { IfStmt } from '@angular/compiler';
 
 export class Engine {
     document: Document = document;
@@ -65,14 +66,13 @@ export class Engine {
 
         const { target, which } = event;
         const grabbedNode = target.closest('.create-flowy');
-
         if (which === 3 || !grabbedNode) {
             if (event.target.className === 'canvas') {
                 this.canvas.toggleDraggingCanvas(true);
             } else {
                 return;
             }
-        } else  {
+        } else {
             this.canvas.grab(grabbedNode);
             this.canvas.toggleDragging(true);
             this.onGrab(grabbedNode);
@@ -101,10 +101,13 @@ export class Engine {
             !this.canvas.isDragging &&
             !this.canvas.isRearranging
         ) {
-            this.canvas.toggleDraggingBlock(true);
-            this.canvas.registerDragger(theblock);
 
+            this.canvas.registerDragger(theblock);
             const { draggedElement } = this.canvas;
+
+            if (draggedElement.id !== 0) {
+                this.canvas.toggleDraggingBlock(true);
+            }
 
             this.canvas.setState({
                 dragX: mouseX - draggedElement.position().left,
@@ -123,7 +126,6 @@ export class Engine {
 
 
     endDrag(event) {
-
         if (this.canvas.isCanvasDragging) {
             this.canvas.toggleDraggingCanvas(false);
         }
@@ -143,7 +145,6 @@ export class Engine {
         if (this.canvas.isDragging) {
             this.canvas.toggleDragger(false);
         }
-
         if (draggedElement.id === 0 && this.canvas.isRearranging) {
             this.canvas.toggleDragger(false);
             this.canvas.toggleRearranging(false);
@@ -187,12 +188,10 @@ export class Engine {
     public snap(block) {
         const { draggedElement } = this.canvas;
         if (!this.canvas.isRearranging) {
-            // TODO: replace with `canvas.drop()`?
             this.canvas.appendChild(draggedElement.node);
         }
 
         let totalRemove = 0;
-
         const childBlocks = this.canvas.findChildBlocks(block.id);
 
         const totalWidth = childBlocks.reduce(
@@ -214,11 +213,10 @@ export class Engine {
 
             childElement.styles({ left: lft + 'px' });
         });
-
         const { top, left, scrollTop, scrollLeft } = this.canvas.position();
 
         this.canvas.draggedElement.styles({
-            left: block.x - totalWidth / 2 + totalRemove - left + scrollLeft + 'px',
+            left: block.x - totalWidth / 2 + totalRemove - left + 'px',
             top: block.y + block.height / 2 + this.canvas.spacingY - top + 'px'
         });
 
@@ -393,7 +391,6 @@ export class Engine {
 
     rearrangeMe() {
         const parents = this.canvas.blocks.map(({ parent }) => parent);
-
         for (let z = 0; z < parents.length; z++) {
             if (parents[z] === -1) {
                 z++;
@@ -500,6 +497,9 @@ export class Engine {
             this.canvas.updateCanvasDragPosition();
         }
         if (this.canvas.isDraggingBlock) {
+            if (this.canvas.blocks.length === 0) {
+                return;
+            }
             this.canvas.toggleRearranging(true);
             this.canvas.toggleDragger(true);
             this.canvas.groupDraggedTree();
@@ -518,6 +518,9 @@ export class Engine {
         if (this.canvas.isDragging) {
             this.canvas.updateDragPosition();
         } else if (this.canvas.isRearranging) {
+            if (this.canvas.blocks.length === 0) {
+                return;
+            }
             this.canvas.updateRearrangePosition();
         }
 

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "remservice-b8ee7"
+  },
+  "targets": {
+    "remservice-b8ee7": {
+      "hosting": {
+        "dev": [
+          "ngflowy"
+        ]
+      }
+    }
+  }
+}

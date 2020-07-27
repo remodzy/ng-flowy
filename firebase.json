@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+    "public": "dist/flowyang",
+    "target": "dev",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+]
+}
