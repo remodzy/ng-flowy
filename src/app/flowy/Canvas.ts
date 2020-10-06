@@ -1,5 +1,5 @@
-import { BlockElement } from './blockElement';
-import { Block } from './block';
+import { BlockElement } from './BlockElement';
+import { Block } from './Block';
 
 export interface State {
     dragX: number;

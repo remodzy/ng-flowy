@@ -1,4 +1,4 @@
-import { BlockElement } from './blockElement';
+import { BlockElement } from './BlockElement';
 
 export class ArrowElement {
     node: HTMLElement;

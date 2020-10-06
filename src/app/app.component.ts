@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { Engine } from './flowy/engine';
+import { Engine } from './flowy/Engine';
 
 declare var flowy: any;
 

@@ -1,5 +1,5 @@
-import { ArrowElement } from './arrowElement';
-import { Block } from './block';
+import { ArrowElement } from './ArrowElement';
+import { Block } from './Block';
 
 
 export class BlockElement extends Block{

@@ -1,5 +1,5 @@
-import { Canvas } from './canvas';
-import { Block } from './block';
+import { Canvas } from './Canvas';
+import { Block } from './Block';
 import { IfStmt } from '@angular/compiler';
 
 export class Engine {
